@@ -41,25 +41,14 @@ class Budget {
     }
 
     getCurrentBalance(){
-        if(this.entries.length === 0) return 0;
-        let totalIncome = 0;
-        let totalExpense = 0;
-        this.entries.forEach( entry => {
-            if( entry.type === "income") {
-                totalIncome += entry.amount;
-            }else if( entry.type === "expense"){
-                totalExpense += entry.amount;
-            } 
-        })
-        return totalIncome - totalExpense;
+        return this.entries.reduce((sum, entry) => entry.type === "income" ? sum + entry.amount : sum - entry.amount 
+        , 0)
     }
 
  
 
      getFormattedEntries(){
-        return this.entries.map(entry =>
-            (`${entry.date} | ${entry.description} | ${entry.getFormattedAmount()}`)
-        )
+        return this.entries.map(entry => `${entry.date} | ${entry.description} | ${entry.getFormattedAmount()}` )
      }
 
 
