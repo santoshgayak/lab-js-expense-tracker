@@ -57,7 +57,8 @@ class Budget {
 
      getFormattedEntries(){
         let formattedEntries = [];
-        this.entries.forEach( entry => formattedEntries.push(`${entry.date} | ${entry.description} | ${entry.type === "expense" ? "-" : ""}${entry.amount} €`)
+        this.entries.forEach( entry =>
+            formattedEntries.push(`${entry.date} | ${entry.description} | ${entry.getFormattedAmount()}`)
         )
         return formattedEntries
 
