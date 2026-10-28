@@ -47,20 +47,20 @@ class Budget {
         this.entries.forEach( entry => {
             if( entry.type === "income") {
                 totalIncome += entry.amount;
-            }
-            if( entry.type === "expense"){
+            }else if( entry.type === "expense"){
                 totalExpense += entry.amount;
             } 
         })
         return totalIncome - totalExpense;
     }
 
-     getFormattedEntries(){
-        let formattedEntries = [];
-        this.entries.forEach( entry =>
-            formattedEntries.push(`${entry.date} | ${entry.description} | ${entry.getFormattedAmount()}`)
-        )
-        return formattedEntries
+ 
 
+     getFormattedEntries(){
+        return this.entries.map(entry =>
+            (`${entry.date} | ${entry.description} | ${entry.getFormattedAmount()}`)
+        )
      }
+
+
 }
